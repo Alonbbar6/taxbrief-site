@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaxBrief — Support</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #21262d;
+      --teal: #2ec4b6;
+      --teal-dim: rgba(46,196,182,0.12);
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--teal-dim);
+      border: 1px solid rgba(46,196,182,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { color: var(--teal); }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--teal); }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .contact-card {
+      background: var(--teal-dim);
+      border: 1px solid rgba(46,196,182,0.25);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .contact-card strong {
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--teal);
+      color: #0d1117;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .faq { margin-bottom: 48px; }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      background: var(--surface);
+      transition: background 0.15s;
+    }
+
+    .faq-item summary:hover { background: #1c2128; }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 20px;
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+
+    .faq-item[open] summary::after { content: "−"; }
+
+    .faq-item .answer {
+      padding: 16px 20px 20px;
+      color: var(--muted);
+      font-size: 15px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .faq-item .answer code {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 13px;
+      color: var(--teal);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge span { color: var(--teal); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a { color: var(--teal); text-decoration: none; }
+
+    @media (max-width: 540px) {
+      .hero h1 { font-size: 28px; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-icon">📊</div>
+  <div class="logo-text">Tax<span>Brief</span></div>
+  <nav>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h1>How can we help?</h1>
+    <p>Support for TaxBrief — the privacy-first tax education app for iOS.</p>
+  </div>
+
+  <div class="badge-row">
+    <div class="badge"><span>✓</span> iOS 18.1+</div>
+    <div class="badge"><span>✓</span> 2026 Tax Year</div>
+    <div class="badge"><span>✓</span> 100% On-Device</div>
+    <div class="badge"><span>✓</span> One-Time Purchase</div>
+  </div>
+
+  <div class="contact-card" id="contact">
+    <div>
+      <strong>Email Support</strong>
+      <p>We typically respond within 1–2 business days.</p>
+    </div>
+    <a class="btn" href="mailto:alonbbar@gmail.com">alonbbar@gmail.com</a>
+  </div>
+
+  <div class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-item">
+      <summary>Is my financial data safe?</summary>
+      <div class="answer">
+        Yes. TaxBrief stores everything 100% on your device. There are no accounts, no servers, and no cloud sync. Your financial data never leaves your iPhone or iPad — not even for the AI features, which run entirely on-device via Apple Intelligence.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I restore my purchase on a new device?</summary>
+      <div class="answer">
+        Open TaxBrief → tap the <code>My Data</code> tab → scroll down to the <strong>Subscription</strong> section → tap <strong>Restore Purchase</strong>. Make sure you're signed in with the same Apple ID used for the original purchase.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What iOS version does TaxBrief require?</summary>
+      <div class="answer">
+        TaxBrief requires <strong>iOS 18.1 or later</strong>. The AI Q&amp;A feature (Ask AI tab) requires <strong>iOS 26</strong> and a device that supports Apple Intelligence.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is TaxBrief a replacement for a CPA or tax professional?</summary>
+      <div class="answer">
+        No. TaxBrief is an educational tool that explains tax concepts in plain English, grounded in IRS publications. All answers are for educational purposes only. Always consult a licensed CPA or tax advisor for advice specific to your situation.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What tax year does TaxBrief cover?</summary>
+      <div class="answer">
+        TaxBrief is built for the <strong>2026 tax year</strong>, using figures from IRS Rev. Proc. 2025-32 — including updated standard deductions, tax brackets, IRA limits, and HSA contribution caps.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I enter multiple W-2 forms?</summary>
+      <div class="answer">
+        Go to the <code>My Data</code> tab → tap <strong>Add another W-2</strong>. Each W-2 is tracked separately, and your wages and withholdings are automatically combined on the Dashboard.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I delete all my data?</summary>
+      <div class="answer">
+        Simply delete TaxBrief from your device. Because all data is stored locally with no server backup, deletion is immediate and permanent. There is no account to close.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Why is the Ask AI tab not available on my device?</summary>
+      <div class="answer">
+        The AI Q&amp;A feature requires iOS 26 and Apple Intelligence, which is only available on iPhone 15 Pro, iPhone 16, and later models (with Apple Intelligence enabled in Settings). All other features work on any device running iOS 18.1+.
+      </div>
+    </details>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 TaxBrief &nbsp;·&nbsp; <a href="mailto:alonbbar@gmail.com">Contact Support</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
